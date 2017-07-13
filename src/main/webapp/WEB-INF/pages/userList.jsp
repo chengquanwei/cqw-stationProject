@@ -1,4 +1,5 @@
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>  
+<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>  
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>  
 <%  
 String path = request.getContextPath();  
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";  
@@ -9,7 +10,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>  
     <base href="<%=basePath%>">  
       
-    <title>My JSP 'addUser.jsp' starting page</title>  
+    <title>My JSP 'showUser.jsp' starting page</title>  
       
     <meta http-equiv="pragma" content="no-cache">  
     <meta http-equiv="cache-control" content="no-cache">  
@@ -22,12 +23,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   
   </head>  
     
-  <body>  
-    <form id="addUser" action="user/addUser" method="post">   
-        userName: <input id="name" name="name" /><br/>   
-        password: <input id="password" name="password" /><br/>   
-        age: <input id="age" name="age"/><br/>   
-        <input type="submit" value="添加新用户"/>   
-    </form>  
+  <body>
+    <c:forEach items="${uList }" var="u">
+         编号：${u.id }
+        用户名称：${u.userName}
+    <br/>  
+    </c:forEach>  
   </body>  
 </html> 

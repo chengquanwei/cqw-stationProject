@@ -5,10 +5,13 @@ import java.util.List;
 import javax.annotation.Resource;  
 import javax.servlet.http.HttpServletRequest;  
   
+
 import org.springframework.stereotype.Controller;  
 import org.springframework.ui.Model;  
 import org.springframework.web.bind.annotation.RequestMapping;  
   
+import org.springframework.web.servlet.ModelAndView;
+
 import com.bdx.dto.User;  
 import com.bdx.service.IUserService;  
 
@@ -19,10 +22,11 @@ public class UserController {
     private IUserService userService;  
       
     @RequestMapping("/userList")  
-    public String userList(HttpServletRequest request,Model model){  
+    public ModelAndView userList(HttpServletRequest request){  
         List<User> uList = userService.getAllUser();  
-        model.addAttribute("uList", uList);  
-        return "userList";  
+        ModelAndView mv = new ModelAndView("hello");  
+        mv.addObject("uList", uList);  
+        return new ModelAndView("userList", "uList", uList); 
     }  
       
     @RequestMapping("/showUser")  

@@ -39,6 +39,83 @@
              #{userId,jdbcType=DECIMAL}  
         </foreach>  
     </select>  
-   
+    <!-- 插入用户 -->  
+    <insert id="insertUser" parameterType="com.bdx.dto.User">  
+        insert into user    
+        <trim prefix="(" suffix=")" suffixOverrides="," >    
+          <if test="id != null" >    
+            id,    
+          </if>    
+          <if test="userName != null" >    
+            user_name,    
+          </if>    
+          <if test="password != null" >    
+            password,    
+          </if>       
+        </trim>    
+        <trim prefix="values (" suffix=")" suffixOverrides="," >    
+          <if test="id != null" >    
+            #{id,jdbcType=INTEGER},    
+          </if>    
+          <if test="userName != null" >    
+            #{userName,jdbcType=VARCHAR},    
+          </if>    
+          <if test="password != null" >    
+            #{password,jdbcType=VARCHAR},    
+          </if>     
+        </trim>     
+    </insert>  
+      
+    <!-- 批量插入用户 -->  
+    <insert id="insertUserByBatch" parameterType="java.util.List" >  
+    insert into USER  
+       (ID,  
+        NAME,  
+        PASSWORD,  
+        AGE)  
+    select A.* from  
+         (  
+         <foreach collection="list" item="user" index="index" separator="union">  
+             select   
+             #{user.id,jdbcType=INTEGER},  
+             #{user.name,jdbcType=VARCHAR},  
+             #{user.password,jdbcType=VARCHAR},  
+             #{user.age,jdbcType=INTEGER}  
+              from dual  
+         </foreach>  
+         ) A  
+    </insert>  
+  
+    <!-- 删除用户 -->  
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">  
+        delete from user  
+        where id = #{id,jdbcType=INTEGER}    
+    </delete>  
+      
+    <!-- 批量删除用户 -->  
+    <delete id="deleteUserByBatch" parameterType="java.util.Map" >  
+     delete from user  
+     where id IN   
+         <foreach item="ids" collection="iList" open="(" separator="," close=")">  
+             #{ids,jdbcType=DECIMAL}  
+         </foreach>  
+    </delete>  
+  
+    <!-- 更新用户 -->  
+    <update id="updateByPrimaryKey" parameterType="com.bdx.dto.User" >    
+        update user    
+        <set >    
+          <if test="name != null" >    
+            name = #{name,jdbcType=VARCHAR},    
+          </if>    
+          <if test="password != null" >    
+            password = #{password,jdbcType=VARCHAR},    
+          </if>    
+          <if test="age != null" >    
+            age = #{age,jdbcType=INTEGER},    
+          </if>    
+        </set>    
+        where id = #{id,jdbcType=INTEGER}   
+    </update>  
     
 </mapper>  

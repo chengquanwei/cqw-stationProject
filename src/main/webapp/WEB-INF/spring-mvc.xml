@@ -37,11 +37,11 @@
     </bean>  
       
     <!-- 定义跳转的文件的前后缀 ，视图模式配置-->  
-    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">  
-        <!-- 这里的配置我的理解是自动给后面action的方法return的字符串加上前缀和后缀，变成一个 可用的url地址 -->  
-        <property name="prefix" value="/WEB-INF/jsp/" />  
-        <property name="suffix" value=".jsp" />  
-    </bean>  
+<!--     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">   -->
+        <!-- 这里的配置:自动给后面action的方法return的字符串加上前缀和后缀，变成一个 可用的url地址 -->  
+<!--         <property name="prefix" value="/WEB-INF/pages/" />   -->
+<!--         <property name="suffix" value=".jsp" />   -->
+<!--     </bean>   -->
       
     <!-- SpringMVC上传文件时，需要配置MultipartResolver处理器-->  
     <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">    
@@ -52,5 +52,18 @@
         <!-- 内存中的最大值 -->  
         <property name="maxInMemorySize" value="40960" />    
     </bean>   
+    
+     <!-- 配置freeMarker的模板路径 -->  
+     <bean class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">  
+        <property name="templateLoaderPath" value="WEB-INF/pages/" />  
+        <property name="defaultEncoding" value="UTF-8" />  
+     </bean>  
+     <!-- freemarker视图解析器 -->  
+     <bean class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver">  
+        <property name="suffix" value=".ftl" />  
+        <property name="contentType" value="text/html;charset=UTF-8" />  
+        <!-- 此变量值为pageContext.request, 页面使用方法：rc.contextPath -->  
+<!--         <property name="requestContextAttribute" value="rc" />  		 -->
+     </bean>  
   
 </beans>  
