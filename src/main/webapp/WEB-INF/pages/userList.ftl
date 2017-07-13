@@ -6,7 +6,7 @@
     <body>  
        <#list uList as user>  
 			username : ${user.userName}<br/>  
-			password : ${user.password}  <br/>  
+			password : ${user.password}<br/>  
 		</#list>  
     </body>  
 </html>  
