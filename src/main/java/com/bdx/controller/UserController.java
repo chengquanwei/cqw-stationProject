@@ -1,7 +1,12 @@
 package com.bdx.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;  
   
+
+
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;  
@@ -9,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
   
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
 
 import com.bdx.dto.User;  
 import com.bdx.service.IUserService;  
@@ -18,6 +22,7 @@ import com.bdx.utils.SiteResponse;
 @Controller  
 @RequestMapping("/user")  
 public class UserController {  
+	Logger logger = Logger.getLogger(UserController.class);
     @Autowired  
     private IUserService userService;  
       
@@ -35,9 +40,10 @@ public class UserController {
   
   @RequestMapping(value = "/userList",method = RequestMethod.POST)
   public @ResponseBody SiteResponse userList(HttpServletRequest request){  
-//    List<User> uList = userService.getAllUser();  
+	  logger.info("into userList.");
+	  List<User> uList = userService.getAllUser();  
 	  SiteResponse res = new SiteResponse();
-	  res.success("framework实现前后端分离");
+	  res.success(uList);
     return res; 
   }
     
