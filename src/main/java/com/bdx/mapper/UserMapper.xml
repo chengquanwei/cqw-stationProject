@@ -5,7 +5,6 @@
         <result column="id" property="id" jdbcType="INTEGER" />
         <result column="user_name" property="userName" jdbcType="VARCHAR" />
         <result column="password" property="password" jdbcType="VARCHAR" />
-        
     </resultMap>  
   
     <sql id="Base_Column_List">  
@@ -13,8 +12,7 @@
     </sql>  
   
     <!-- 查询用户-->  
-    <select id="queryByPrimaryKey" resultMap="BaseResultMap"  
-        parameterType="java.lang.Integer">  
+    <select id="queryByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">  
         select  
         <include refid="Base_Column_List" />  
         from user  
@@ -29,8 +27,7 @@
     </select>  
       
     <!-- 批量查询用户-->  
-    <select id="queryUserByBatch" resultMap="BaseResultMap"  
-        parameterType="java.util.Map">  
+    <select id="queryUserByBatch" resultMap="BaseResultMap" parameterType="java.util.Map">  
         select  
         <include refid="Base_Column_List" />  
         from user  

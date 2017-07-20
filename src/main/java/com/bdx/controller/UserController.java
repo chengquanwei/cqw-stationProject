@@ -1,33 +1,46 @@
 package com.bdx.controller;
 
-import java.util.List;  
-
-import javax.annotation.Resource;  
 import javax.servlet.http.HttpServletRequest;  
   
-
-import org.springframework.stereotype.Controller;  
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;  
 import org.springframework.web.bind.annotation.RequestMapping;  
   
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.bdx.dto.User;  
 import com.bdx.service.IUserService;  
+import com.bdx.utils.SiteResponse;
 
 @Controller  
 @RequestMapping("/user")  
 public class UserController {  
-    @Resource  
+    @Autowired  
     private IUserService userService;  
       
-    @RequestMapping("/userList")  
-    public ModelAndView userList(HttpServletRequest request){  
-        List<User> uList = userService.getAllUser();  
-        ModelAndView mv = new ModelAndView("hello");  
-        mv.addObject("uList", uList);  
-        return new ModelAndView("userList", "uList", uList); 
-    }  
+//    @RequestMapping("/userList")  
+//    public ModelAndView userList(HttpServletRequest request){  
+//        List<User> uList = userService.getAllUser();  
+//        return new ModelAndView("userList", "uList", uList); 
+//    }  
+    
+//  @RequestMapping("/index")  
+//  public ModelAndView index(){
+//	  SiteResponse res = new SiteResponse();
+//      return new ModelAndView("userList"); 
+//  }
+  
+  @RequestMapping(value = "/userList",method = RequestMethod.POST)
+  public @ResponseBody SiteResponse userList(HttpServletRequest request){  
+//    List<User> uList = userService.getAllUser();  
+	  SiteResponse res = new SiteResponse();
+	  res.success("framework实现前后端分离");
+    return res; 
+  }
+    
       
     @RequestMapping("/showUser")  
     public String showUser(HttpServletRequest request,Model model){  
@@ -47,7 +60,7 @@ public class UserController {
         User user = new User();  
         user.setUserName(String.valueOf(request.getParameter("name")));  
         user.setPassword(String.valueOf(request.getParameter("password")));  
-//        user.setAge(Integer.parseInt(String.valueOf(request.getParameter("age"))));  
+//      user.setAge(Integer.parseInt(String.valueOf(request.getParameter("age"))));  
         userService.addUser(user);  
         return "redirect:/user/userList";  
     }  

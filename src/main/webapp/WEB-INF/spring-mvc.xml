@@ -21,7 +21,7 @@
     </bean>  
       
      <!-- 添加注解驱动 -->    
-    <mvc:annotation-driven />  
+    <mvc:annotation-driven/>  
     <mvc:default-servlet-handler/>  
       
     <!-- 设置使用注解的类所在的包 -->  
@@ -39,7 +39,7 @@
     <!-- 定义跳转的文件的前后缀 ，视图模式配置-->  
 <!--     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">   -->
         <!-- 这里的配置:自动给后面action的方法return的字符串加上前缀和后缀，变成一个 可用的url地址 -->  
-<!--         <property name="prefix" value="/WEB-INF/pages/" />   -->
+<!--         <property name="prefix" value="/pages/" />   -->
 <!--         <property name="suffix" value=".jsp" />   -->
 <!--     </bean>   -->
       
@@ -55,15 +55,16 @@
     
      <!-- 配置freeMarker的模板路径 -->  
      <bean class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">  
-        <property name="templateLoaderPath" value="WEB-INF/pages/" />  
+        <property name="templateLoaderPath" value="/pages/" />  
         <property name="defaultEncoding" value="UTF-8" />  
      </bean>  
      <!-- freemarker视图解析器 -->  
      <bean class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver">  
         <property name="suffix" value=".ftl" />  
+        <property name="prefix" value="/pages/" />
         <property name="contentType" value="text/html;charset=UTF-8" />  
         <!-- 此变量值为pageContext.request, 页面使用方法：rc.contextPath -->  
-<!--         <property name="requestContextAttribute" value="rc" />  		 -->
+<!--    <property name="requestContextAttribute" value="rc" />  		 -->
      </bean>  
   
 </beans>  
