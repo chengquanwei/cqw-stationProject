@@ -8,4 +8,5 @@
 			   整合FreeMarker模板
 2017年7月13日：将项目添加至github平台上
 2017年7月20日：framework与springMVC实现前后端分离
+			  访问路径：http://localhost:8080/bdxgroup-project/pages/userList.html
 2017年7月21日：发布文章（增删改查）

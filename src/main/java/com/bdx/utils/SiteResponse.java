@@ -39,7 +39,7 @@ public class SiteResponse {
 	        return data;  
 	    }  
 
-	    public class Meta {  
+	    public class Meta {
 	        private boolean success;  
 	        private String message;  
 
