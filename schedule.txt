@@ -10,4 +10,5 @@
 2017年7月20日：framework与springMVC实现前后端分离
 			  访问路径：http://localhost:8080/bdxgroup-project/pages/userList.html
 			  加入log4j日志
+			 增加layer插件
 2017年7月21日：发布文章（增删改查）
