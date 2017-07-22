@@ -21,6 +21,7 @@ import com.yszc.blog.service.IUserService;
   
 @Service("userService")  
 public class UserServiceImpl implements IUserService {  
+	
     @Resource  
     private IUserDao userDao;  
       

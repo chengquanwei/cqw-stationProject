@@ -24,7 +24,7 @@ import com.yszc.blog.utils.BlogResponse;
 @Controller  
 @RequestMapping("/user")  
 public class UserController {  
-  Logger logger = Logger.getLogger(UserController.class);
+  private final Logger logger = Logger.getLogger(UserController.class);
   @Autowired  
   private IUserService userService;  
    

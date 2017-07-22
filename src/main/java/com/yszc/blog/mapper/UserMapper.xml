@@ -3,12 +3,13 @@
 <mapper namespace="com.yszc.blog.dao.IUserDao" >
     <resultMap id="BaseResultMap" type="com.yszc.blog.dto.User">
         <result column="id" property="id" jdbcType="INTEGER" />
+        <result column="real_name" property="realName" jdbcType="VARCHAR" />
         <result column="user_name" property="userName" jdbcType="VARCHAR" />
         <result column="password" property="password" jdbcType="VARCHAR" />
     </resultMap>  
   
     <sql id="Base_Column_List">  
-        id, user_name, password
+        id,real_name,user_name, password
     </sql>  
   
     <!-- 查询用户-->  

@@ -5,7 +5,6 @@ import java.util.Date;
 public class User {  
 	
     private Integer id;  
-  
     private String realName;
     private String userName;
     private String password;  
