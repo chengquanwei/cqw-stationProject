@@ -1,6 +1,6 @@
-package com.bdx.utils;
+package com.yszc.blog.utils;
 
-public class SiteResponse {
+public class BlogResponse {
 
 	    private static final String OK = "ok";  
 	    private static final String ERROR = "error";  
@@ -10,23 +10,23 @@ public class SiteResponse {
 	    private Object data;  
 
 	  
-	    public SiteResponse success() {  
+	    public BlogResponse success() {  
 	        this.meta = new Meta(true, OK);  
 	        return this;  
 	    }  
 
-	    public SiteResponse success(Object data) {  
+	    public BlogResponse success(Object data) {  
 	        this.meta = new Meta(true, OK);  
 	        this.data = data;  
 	        return this;  
 	    }  
 	  
-	    public SiteResponse failure() {  
+	    public BlogResponse failure() {  
 	        this.meta = new Meta(false, ERROR);  
 	        return this;  
 	    }  
 
-	    public SiteResponse failure(String message) {  
+	    public BlogResponse failure(String message) {  
 	        this.meta = new Meta(false, message);  
 	        return this;  
 	    }  

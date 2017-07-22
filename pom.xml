@@ -1,12 +1,13 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>com.bdx</groupId>
-  <artifactId>bdx-group</artifactId>
+  <groupId>com.yszc.blog</groupId>
+  <artifactId>yszcblog-project</artifactId>
   <packaging>war</packaging>
   <version>0.0.1-SNAPSHOT</version>
-  <name>bdx-group Maven Webapp</name>
+  <name>yszcblog-project</name>
   <url>http://maven.apache.org</url>
+  
   
    <!-- 用来设置版本号 -->  
     <properties>  
@@ -172,9 +173,20 @@
 		    <artifactId>freemarker-gae</artifactId>
 		    <version>2.3.18</version>
 		</dependency>
-        
   </dependencies>
   <build>
-    <finalName>bdx-group</finalName>
+    <finalName>yszcblog-project</finalName>
+    <plugins>  
+        <!-- define the project compile level -->  
+        <plugin>  
+            <groupId>org.apache.maven.plugins</groupId>  
+            <artifactId>maven-compiler-plugin</artifactId>  
+            <version>2.3.2</version>  
+            <configuration>  
+                <source>1.7</source>  
+                <target>1.7</target>  
+            </configuration>  
+        </plugin>  
+    </plugins>  
   </build>
 </project>

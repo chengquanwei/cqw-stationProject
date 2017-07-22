@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>  
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >  
-<mapper namespace="com.bdx.dao.IUserDao" >
-    <resultMap id="BaseResultMap" type="com.bdx.dto.User">
+<mapper namespace="com.yszc.blog.dao.IUserDao" >
+    <resultMap id="BaseResultMap" type="com.yszc.blog.dto.User">
         <result column="id" property="id" jdbcType="INTEGER" />
         <result column="user_name" property="userName" jdbcType="VARCHAR" />
         <result column="password" property="password" jdbcType="VARCHAR" />
@@ -37,7 +37,7 @@
         </foreach>  
     </select>  
     <!-- 插入用户 -->  
-    <insert id="insertUser" parameterType="com.bdx.dto.User">  
+    <insert id="insertUser" parameterType="com.yszc.blog.dto.User">  
         insert into user    
         <trim prefix="(" suffix=")" suffixOverrides="," >    
           <if test="id != null" >    
@@ -99,7 +99,7 @@
     </delete>  
   
     <!-- 更新用户 -->  
-    <update id="updateByPrimaryKey" parameterType="com.bdx.dto.User" >    
+    <update id="updateByPrimaryKey" parameterType="com.yszc.blog.dto.User" >    
         update user    
         <set >    
           <if test="name != null" >    
