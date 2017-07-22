@@ -15,10 +15,11 @@ $(function(){
 				var res = result.data;
 				var info = "";
 				for(var i = 0;i<res.length;i++){
+					var creadTime =res[i].createdTime==null?'0000-0-0 00:00:00':format(res[i].createdTime)
 					info += 
 						'<tr><td>'+res[i].title +'</td></tr>'+
 						'<tr><td>'+res[i].article +'</td></tr>'+
-						'<tr><td>'+format(res[i].createdTime) +'</td></tr>';
+						'<tr><td>'+ creadTime +'</td></tr>';
 				}
 				$("#articleList").html(info);
 			}else{
@@ -40,7 +41,7 @@ $(function(){
  function format(timestamp) {
 	var newDate = new Date();
 	newDate.setTime(timestamp);
-	format = 'yyyy-MM-dd hh:mm:ss';
+	var format = 'yyyy-MM-dd hh:mm:ss';
        var date = {
               "M+": newDate.getMonth() + 1,
               "d+": newDate.getDate(),
