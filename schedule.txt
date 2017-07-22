@@ -11,4 +11,6 @@
 			  访问路径：http://localhost:8080/yszcblog-project/pages/userList.html
 			  加入log4j日志
 			 增加layer插件
-2017年7月21日：发布文章（增删改查）
+2017年7月21日：设计数据库
+2017年7月22日：修改项目名
+			   发布文章（增删改查）
