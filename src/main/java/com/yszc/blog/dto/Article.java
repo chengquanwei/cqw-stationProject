@@ -1,14 +1,15 @@
 package com.yszc.blog.dto;
 
 import java.util.Date;
+import java.util.List;
 
 public class Article {
 	private Integer id;
 	private String title;
 	private String article;
 	private String type;
-	private String tags;//标签
-	private Integer userId;
+	private List<Tag> tags;//标签
+	private User user;
 	private Date createdTime;
 	private Date updatedTime;
 	
@@ -36,17 +37,11 @@ public class Article {
 	public void setType(String type) {
 		this.type = type;
 	}
-	public String getTags() {
+	public List<Tag> getTags() {
 		return tags;
 	}
-	public void setTags(String tags) {
+	public void setTags(List<Tag> tags) {
 		this.tags = tags;
-	}
-	public Integer getUserId() {
-		return userId;
-	}
-	public void setUserId(Integer userId) {
-		this.userId = userId;
 	}
 	public Date getCreatedTime() {
 		return createdTime;
@@ -60,12 +55,11 @@ public class Article {
 	public void setUpdatedTime(Date updatedTime) {
 		this.updatedTime = updatedTime;
 	}
-	
-	@Override
-	public String toString() {
-		return "Article [id=" + id + ", article=" + article + ", type=" + type
-				+ ", tags=" + tags + ", userId=" + userId + ", createdTime="
-				+ createdTime + ", updatedTime=" + updatedTime + "]";
+	public User getUser() {
+		return user;
+	}
+	public void setUser(User user) {
+		this.user = user;
 	}
 	
 }

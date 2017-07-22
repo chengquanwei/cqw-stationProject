@@ -15,10 +15,10 @@ $(function(){
 				var res = result.data;
 				var info = "";
 				for(var i = 0;i<res.length;i++){
-					var creadTime =res[i].createdTime==null?'0000-0-0 00:00:00':format(res[i].createdTime)
+					var creadTime = res[i].createdTime == null?'0000-0-0 00:00:00':format(res[i].createdTime);
 					info += 
-						'<tr><td>'+res[i].title +'</td></tr>'+
-						'<tr><td>'+res[i].article +'</td></tr>'+
+						'<tr><td>'+ res[i].title +'</td></tr>'+
+						'<tr><td>'+ res[i].article +'</td></tr>'+
 						'<tr><td>'+ creadTime +'</td></tr>';
 				}
 				$("#articleList").html(info);
@@ -30,7 +30,7 @@ $(function(){
 			}
 		}
 	});
-})
+});
 
 // 将当前时间换成时间格式字符串
 /**
