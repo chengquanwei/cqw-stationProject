@@ -3,15 +3,17 @@
  *@date:2017年7月12日22:39:18
  *@description 项目任务计划表
  */
+ 访问路径：http://localhost:8080/yszcblog-project/pages/userList.html
 -------------------------------------------------------------------------------
 2017年7月12日：项目构建（ssm+maven）
 			   整合FreeMarker模板
 2017年7月13日：将项目添加至github平台上
 2017年7月20日：framework与springMVC实现前后端分离
-			  访问路径：http://localhost:8080/yszcblog-project/pages/userList.html
 			  加入log4j日志
 			 增加layer插件
 2017年7月21日：设计数据库
 2017年7月22日：修改项目名
 			   发布文章（增删改查）
 2017年7月23日：加入shiro安全框架（未解决登出问题）
+2017年7月24日：审核数据库是否符合第三范式
+			 尽量解决shiro的session的生命周期的问题
