@@ -39,6 +39,7 @@ public interface ArticleDao {
 	  * @Description 添加
 	 */
 	public void insertArticle(Article article);
+	public void insertArticleTag(Article article);
 	
 	/**
 	 * @author cqw

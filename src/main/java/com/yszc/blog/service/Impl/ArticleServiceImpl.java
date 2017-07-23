@@ -37,6 +37,7 @@ public class ArticleServiceImpl implements ArticleService{
 	@Override
 	public void addArticle(Article article) {
 		articleDao.insertArticle(article);
+		articleDao.insertArticleTag(article);
 	}
 
 	@Override

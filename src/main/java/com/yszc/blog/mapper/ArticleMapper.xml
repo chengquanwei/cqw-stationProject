@@ -50,5 +50,33 @@
         	t.id = at.tag_id
         order by a.id,t.id
     </select>  
+    
+    
+      <!-- 新建blog -->
+	<insert id="insertArticle" parameterType="com.yszc.blog.dto.Article"
+	useGeneratedKeys="true" keyProperty="id">
+		insert into
+		article(id,title,article,type,user_id,created_time,updated_time)
+		values(#{id},#{title},#{article},#{type},#{user.id},#{createdTime},#{updatedTime})
+	</insert>
+
+	<!-- 新增关联关系的内容 -->
+	<insert id="insertArticleTag" parameterType="com.yszc.blog.dto.Article">
+		insert into article_tag(article_id,tag_id)
+		(
+			select 
+				a.id,t.id
+			from 
+				article a,tag t
+			where 
+				a.id = #{id} 
+			and 
+				t.id IN 
+			<foreach collection="tags" item="tag"  open="(" separator="," close=")">
+				#{tag.id}
+			</foreach>
+		)
+	</insert>
+    
       
 </mapper>  
