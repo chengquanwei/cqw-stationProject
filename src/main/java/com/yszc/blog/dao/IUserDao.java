@@ -24,5 +24,7 @@ public interface IUserDao {
     public void updateByPrimaryKey(Integer id);  
   
     public List<User> getAllUser();  
+    
+    public List<User> queryUserInfoByName(String userName);  
       
 }  

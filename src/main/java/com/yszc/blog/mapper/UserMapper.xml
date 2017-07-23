@@ -26,6 +26,13 @@
         <include refid="Base_Column_List" />  
         from user  
     </select>  
+    <!-- 登录验证 -->
+    <select id="queryUserInfoByName" resultMap="BaseResultMap" parameterType="java.lang.String" >
+	    select 
+	    	<include refid="Base_Column_List" />
+	    from user
+	    where user_name = #{userName,jdbcType=VARCHAR}
+	  </select>
       
     <!-- 批量查询用户-->  
     <select id="queryUserByBatch" resultMap="BaseResultMap" parameterType="java.util.Map">  
