@@ -84,7 +84,7 @@ public class LoginController {
   
 	private boolean isRelogin(User user) {
 	    Subject us = SecurityUtils.getSubject();  
-        if (us.isAuthenticated()) {  
+        if (us.isAuthenticated()) {
         	User userAuth = (User) us.getSession().getAttribute(user.getUserName());
         	if(userAuth != null){
         		if(user.getUserName().equals(userAuth.getUserName()) && user.getPassword().equals(userAuth.getPassword())){
