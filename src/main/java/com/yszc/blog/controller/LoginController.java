@@ -84,9 +84,14 @@ public class LoginController {
   
 	private boolean isRelogin(User user) {
 	    Subject us = SecurityUtils.getSubject();  
-	        if (us.isAuthenticated()) {  
-	           return true; // 参数未改变，无需重新登录，默认为已经登录成功  
-	        }  
-	        return false; // 需要重新登陆  
+        if (us.isAuthenticated()) {  
+        	User userAuth = (User) us.getSession().getAttribute(user.getUserName());
+        	if(userAuth != null){
+        		if(user.getUserName().equals(userAuth.getUserName()) && user.getPassword().equals(userAuth.getPassword())){
+            		return true; // 参数未改变，无需重新登录，默认为已经登录成功  
+            	}
+        	}
+        }  
+        return false; // 需要重新登陆  
 	}  
 }  

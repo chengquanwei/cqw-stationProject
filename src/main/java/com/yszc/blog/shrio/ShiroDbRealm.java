@@ -19,7 +19,7 @@ import com.yszc.blog.service.Impl.UserServiceImpl;
 public class ShiroDbRealm extends AuthorizingRealm {  
     @Autowired  
     private UserServiceImpl userService;  
-    public static final String SESSION_USER_KEY = "gray";  
+    public static final String SESSION_USER_KEY = "admin";  
   
     /** 
      * 授权查询回调函数, 进行鉴权但缓存中无用户的授权信息时调用,负责在应用程序中决定用户的访问控制的方法 
@@ -46,7 +46,7 @@ public class ShiroDbRealm extends AuthorizingRealm {
             return null; // 异常处理，找不到数据  
         // 设置session  
         Session session = SecurityUtils.getSubject().getSession();  
-        session.setAttribute(ShiroDbRealm.SESSION_USER_KEY, ui);   
+        session.setAttribute(ui.getUserName(), ui);   
         //当前 Realm 的 name  
         String realmName = this.getName();  
         //登陆的主要信息: 可以是一个实体类的对象, 但该实体类的对象一定是根据 token 的 username 查询得到的.  
