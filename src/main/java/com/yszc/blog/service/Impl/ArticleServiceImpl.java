@@ -6,6 +6,8 @@ import javax.annotation.Resource;
 
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.yszc.blog.dao.ArticleDao;
 import com.yszc.blog.dto.Article;
@@ -35,7 +37,9 @@ public class ArticleServiceImpl implements ArticleService{
 	}
 
 	@Override
+	@Transactional(readOnly = false, propagation = Propagation.REQUIRED)
 	public void addArticle(Article article) {
+		logger.info("into addArticle.");
 		articleDao.insertArticle(article);
 		articleDao.insertArticleTag(article);
 	}
