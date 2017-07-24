@@ -52,7 +52,7 @@
     </select>  
     
     
-      <!-- 新建blog -->
+    <!-- 新建blog -->
 	<insert id="insertArticle" parameterType="com.yszc.blog.dto.Article"
 	useGeneratedKeys="true" keyProperty="id">
 		insert into

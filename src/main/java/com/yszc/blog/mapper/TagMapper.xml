@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >  
+<mapper namespace="com.yszc.blog.dao.TagDao" >
+    <resultMap id="baseListMap" type="com.yszc.blog.dto.Tag">  
+        <result column="id" property="id" jdbcType="INTEGER"/>  
+        <result column="name" property="name" jdbcType="VARCHAR" />
+        <result column="created_time" property="createdTime" jdbcType="DATE" />
+        <result column="updated_time" property="updatedTime" jdbcType="DATE" />
+    </resultMap>  
+  
+    <!-- 查询文章列表-->  
+    <select id="getTagInfoByName" resultMap="baseListMap">  
+        select  
+        	*
+        from 
+        	tag t
+        where 
+        	t.name = #{name} 
+    </select>  
+    
+    
+    <!-- 新建blog -->
+	<insert id="insertTag" parameterType="com.yszc.blog.dto.Tag"
+	useGeneratedKeys="true" keyProperty="id">
+		insert into
+		tag(name,created_time,updated_time)
+		values(#{name},#{createdTime},#{updatedTime})
+	</insert>
+
+</mapper>  

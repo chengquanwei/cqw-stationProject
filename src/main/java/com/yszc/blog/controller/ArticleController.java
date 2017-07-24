@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.yszc.blog.dto.Article;
 import com.yszc.blog.dto.Tag;
 import com.yszc.blog.service.ArticleService;
+import com.yszc.blog.service.TagService;
 import com.yszc.blog.utils.BlogResponse;
 
 @Controller
@@ -25,6 +26,8 @@ public class ArticleController {
 	private final Logger logger = Logger.getLogger(ArticleController.class);
 	  @Autowired  
 	  private ArticleService articleService;  
+	  @Autowired
+	  private TagService tagService;  
 	   
 		/**
 		 * @author cqw
@@ -50,16 +53,25 @@ public class ArticleController {
 	   * 	并且在将标签id和博客id存入关联表之前也需要检测数据库是否已经存在这种关联关系，如果存在，就不再添加
 	   */
 	  @RequestMapping(value = "/addArticle",method = RequestMethod.POST)
-	  public @ResponseBody BlogResponse addArticle( Article article,@RequestParam("tagId") String tagId, HttpServletRequest request){  
+	  public @ResponseBody BlogResponse addArticle( Article article,@RequestParam("tagName") String tagName, HttpServletRequest request){  
 		  logger.info("into addArticle.");
 		  article.setUpdatedTime(new Date());
 		  article.setCreatedTime(new Date());
-		  if(tagId != null && !"".equals(tagId)){
+		  if(tagName != null && !"".equals(tagName)){
 			  List<Tag> tags = new ArrayList<Tag>();
-			  String[] tagIds = tagId.split(",");
-			  for(String tId:tagIds){
+			  String[] tagNames = tagName.split(",");
+			  for(String tName:tagNames){
 				  Tag tag = new Tag();
-				  tag.setId(Integer.parseInt(tId));
+				  Tag isTag = tagService.getTagInfoByName(tName);
+				  if(isTag != null){
+					  tag.setId(isTag.getId());
+					  logger.info("已经存在的标签:"+ isTag.toString());
+				  }else{
+					 logger.info("添加标签:"+tName);
+					 tag.setName(tName);
+					 tagService.addTag(tag);
+					 logger.info("添加标签后的id:"+tag.getId());
+				  }
 				  tags.add(tag);
 			  }
 			  article.setTags(tags);

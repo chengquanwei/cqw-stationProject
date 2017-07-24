@@ -34,14 +34,13 @@ $(function(){
 		});
 	}
 	
+	/**
+	 * @author cqw
+	 * @date 2017年7月24日22:27:52
+	 * @description 新建博客
+	 */
 	addArticle();
 	function addArticle(){
-		
-		var list_map = new Array();
-		for ( var i = 1; i < 3; i++) {
-		  list_map.push({id:i});
-		}
-		//新增
 		$.ajax({
 			type:"POST",
 			url:"/yszcblog-project/article/addArticle",
@@ -49,7 +48,7 @@ $(function(){
 				title:"标题测试",
 				article:"内容测试",
 				type:"1",
-				tagId:"1,2"
+				tagName:"cs,测试,java,GC"
 			},
 			success:function(result){
 				console.log(result);

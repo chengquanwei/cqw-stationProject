@@ -32,5 +32,10 @@ public class Tag {
 	public void setUpdatedTime(Date updatedTime) {
 		this.updatedTime = updatedTime;
 	}
+	@Override
+	public String toString() {
+		return "Tag [id=" + id + ", name=" + name + ", createdTime="
+				+ createdTime + ", updatedTime=" + updatedTime + "]";
+	}
 	
 }
