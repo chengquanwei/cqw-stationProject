@@ -64,7 +64,7 @@ public class LoginController {
 	}  
 	private String shiroLogin(User user) {  
 	    // 组装token，包括客户公司名称、简称、客户编号、用户名称；密码  
-	    UsernamePasswordToken token = new UsernamePasswordToken(user.getUserName(), user.getPassword().toCharArray(), null);   
+	    UsernamePasswordToken token = new UsernamePasswordToken(user.getUserName(), user.getPassword(), null);   
 	    token.setRememberMe(true);  
 	    // shiro登陆验证  
 	    try {  
@@ -84,6 +84,7 @@ public class LoginController {
   
 	private boolean isRelogin(User user) {
 	    Subject us = SecurityUtils.getSubject();  
+	    
         if (us.isAuthenticated()) {
         	User userAuth = (User) us.getSession().getAttribute(user.getUserName());
         	if(userAuth != null){

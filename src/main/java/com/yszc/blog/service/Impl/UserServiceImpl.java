@@ -46,16 +46,12 @@ public class UserServiceImpl implements IUserService {
       * @date 2017年7月23日下午6:58:10
       * @Description 登录验证
      */
-	public User doUserLogin(User user) {
-		List<User> list = userDao.queryUserInfoByName(user.getUserName());
-		if(list.size() == 0){
-			return null;
+	public User doUserLogin(String  userName) {
+		List<User> list = userDao.queryUserInfoByName(userName);
+		if(list != null && list.size() > 0){
+			return list.get(0);
 		}else{
-			if(user.getPassword().equals(list.get(0).getPassword())){				
-				return list.get(0);			
-			}else{
-				return null;
-			}
+			return null;
 		}
 	}
 }  

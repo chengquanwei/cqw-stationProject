@@ -18,11 +18,12 @@ import com.yszc.blog.dto.Article;
 import com.yszc.blog.dto.Tag;
 import com.yszc.blog.service.ArticleService;
 import com.yszc.blog.service.TagService;
+import com.yszc.blog.utils.BaseController;
 import com.yszc.blog.utils.BlogResponse;
 
 @Controller
 @RequestMapping("/article")
-public class ArticleController {
+public class ArticleController extends BaseController{
 	private final Logger logger = Logger.getLogger(ArticleController.class);
 	  @Autowired  
 	  private ArticleService articleService;  
@@ -75,6 +76,7 @@ public class ArticleController {
 				  tags.add(tag);
 			  }
 			  article.setTags(tags);
+			  article.setUser(getCurrentUser());
 		  }
 		  articleService.addArticle(article);
 		  BlogResponse res = new BlogResponse();

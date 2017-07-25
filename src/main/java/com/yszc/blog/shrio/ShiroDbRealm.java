@@ -39,28 +39,30 @@ public class ShiroDbRealm extends AuthorizingRealm {
     protected AuthenticationInfo doGetAuthenticationInfo(  
          AuthenticationToken authcToken) throws AuthenticationException {  
         // 把token转换成User对象  
-        User userLogin = tokenToUser((UsernamePasswordToken) authcToken);  
+    	UsernamePasswordToken userLogin = (UsernamePasswordToken) authcToken;  
         // 验证用户是否可以登录  
-        User ui = userService.doUserLogin(userLogin);  
+        User ui = userService.doUserLogin(userLogin.getUsername());  
         if(ui == null)  
             return null; // 异常处理，找不到数据  
         // 设置session  
         Session session = SecurityUtils.getSubject().getSession();  
         session.setAttribute(ui.getUserName(), ui);   
-        //当前 Realm 的 name  
-        String realmName = this.getName();  
-        //登陆的主要信息: 可以是一个实体类的对象, 但该实体类的对象一定是根据 token 的 username 查询得到的.  
-//      Object principal = ui.getUsername();  
-        Object principal = authcToken.getPrincipal();  
-        return new SimpleAuthenticationInfo(principal, userLogin.getPassword(), realmName);  
+        /**
+         * SimpleAuthenticationInfo里存放的是SecurityUtils.getSubject().login(token)进行验证的信息
+         * 当执行SecurityUtils.getSubject().login(token)时，会先执行SimpleAuthenticationInfo进行认证
+         * 
+         *  org.apache.shiro.authc.SimpleAuthenticationInfo.SimpleAuthenticationInfo(Object principal, Object credentials, String realmName)
+         * 并且当SecurityUtils.getSubject().getPrincipal()时，获取的是ui的值（第一个参数）
+         */
+        return new SimpleAuthenticationInfo(ui, ui.getPassword(), getName());  
     }  
   
-    private User tokenToUser(UsernamePasswordToken authcToken) {  
-        User user = new User();  
-        user.setUserName(authcToken.getUsername());  
-        user.setPassword(String.valueOf(authcToken.getPassword()));  
-        return user;  
-    }  
+//    private User tokenToUser(UsernamePasswordToken authcToken) {  
+//        User user = new User();  
+//        user.setUserName(authcToken.getUsername());  
+//        user.setPassword(String.valueOf(authcToken.getPassword()));  
+//        return user;  
+//    }  
   
     //一定要写getset方法  
     public UserServiceImpl getUserService() {  

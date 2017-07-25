@@ -1,10 +1,15 @@
 package com.yszc.blog.dto;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class User {  
+public class User implements Serializable {  
 	
-    private Integer id;  
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private Integer id;  
     private String realName;
     private String userName;
     private String password;  
