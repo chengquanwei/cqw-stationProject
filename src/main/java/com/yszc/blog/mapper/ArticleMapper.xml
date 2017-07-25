@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >  
 <mapper namespace="com.yszc.blog.dao.ArticleDao" >
     <resultMap id="queryForListMap" type="com.yszc.blog.dto.Article">  
-        <id column="id" property="id" jdbcType="VARCHAR"/>  
+        <id column="id" property="id" jdbcType="INTEGER"/>  
         <result column="title" property="title" jdbcType="VARCHAR" />
         <result column="article" property="article" jdbcType="VARCHAR" />
         <result column="type" property="type" jdbcType="VARCHAR" />
@@ -10,19 +10,29 @@
         <result column="updated_time" property="updatedTime" jdbcType="DATE" />
         <!-- 1对1 用association 1对多用collection  -->
         <association property="user" javaType="com.yszc.blog.dto.User">  
-            <id column="id" property="id" jdbcType="VARCHAR" />  
+            <id column="id" property="id" jdbcType="INTEGER" />  
             <result column="user_name" property="userName" jdbcType="VARCHAR" />  
         </association>  
-        <!-- 郁闷：页面得到的tag的id为什么都是1 
-        	改为<id column="id" property="id" jdbcType="INTEGER" />后，又只能得到1条tag的值
-        	留下疑问，以后探索。	2017年7月22日20:54:05
-        -->
-        <collection property="tags" ofType="com.yszc.blog.dto.Tag">
-            <result column="id" property="id" jdbcType="INTEGER" />  
-            <result column="name" property="name" jdbcType="VARCHAR" />  
-        </collection>
+		<collection property="tags" column="id" javaType="ArrayList" 
+               ofType="com.yszc.blog.dto.Tag" select="getTagById"/>
     </resultMap>  
+     <resultMap id="tagList" type="com.yszc.blog.dto.Tag">  
+       <id column="id" property="id" jdbcType="INTEGER" />  
+       <result column="name" property="name" jdbcType="VARCHAR" />  
+	</resultMap> 
   
+  <select id="getTagById" resultMap="tagList" parameterType="java.lang.Integer" 	>
+  		select 
+  			t.id,t.name
+	    from 
+	    	tag t
+	    left join
+	    	article_tag at
+	    on
+	    	at.tag_id = t.id
+	    where 
+	    	at.article_id = #{id}
+  </select>
     <!-- 查询文章列表-->  
     <select id="getAllArticle" resultMap="queryForListMap">  
         select  
@@ -30,7 +40,6 @@
         	a.title,
         	a.article,
         	a.type,
-        	t.name,
         	u.user_name,
         	a.created_time,
         	a.updated_time
@@ -40,15 +49,7 @@
         	user u 
         on 
         	a.user_id = u.id
-        left join 
-        	article_tag at
-        on
-        	at.article_id = a.id
-        left join
-        	tag t
-        on
-        	t.id = at.tag_id
-        order by a.id,t.id
+        order by a.id
     </select>  
     
     
@@ -59,6 +60,10 @@
 		article(id,title,article,type,user_id,created_time,updated_time)
 		values(#{id},#{title},#{article},#{type},#{user.id},#{createdTime},#{updatedTime})
 	</insert>
+	
+	<update id="updateArticle" parameterType="com.yszc.blog.dto.Article" >
+        update article set title=#{title},article=#{article},updated_time=#{updatedTime} where id=#{id}
+    </update>
 
 	<!-- 新增关联关系的内容 -->
 	<insert id="insertArticleTag" parameterType="com.yszc.blog.dto.Article">

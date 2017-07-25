@@ -83,4 +83,36 @@ public class ArticleController extends BaseController{
 		  res.success();
 		  return res; 
 	  }
+	  
+	  /**
+	   * @author cqw
+	    * @date 2017年7月25日下午10:21:52
+	    * @Description 修改博客
+	    * 				缺少删除博客与标签的关联关系（在js中单独调用一个方法进行删除）
+	   */
+	  @RequestMapping(value = "/updateArticle",method = RequestMethod.POST)
+	  public @ResponseBody BlogResponse updateArticle(Article article,@RequestParam("tagName") String tagName, HttpServletRequest request){
+		  article.setUpdatedTime(new Date());
+		  if(tagName != null && !"".equals(tagName)){
+			  List<Tag> tags = new ArrayList<Tag>();
+			  String[] tagNames = tagName.split(",");
+			  for(String tName:tagNames){
+				  Tag tag = new Tag();
+				  Tag isTag = tagService.getTagInfoByName(tName);
+				  if(isTag != null){
+					  tag.setId(isTag.getId());
+				  }else{
+					 tag.setName(tName);
+					 tagService.addTag(tag);
+				  }
+				  tags.add(tag);
+			  }
+			  article.setTags(tags);
+			  article.setUser(getCurrentUser());
+		  }
+		  articleService.updateArticle(article);
+		  BlogResponse res = new BlogResponse();
+		  res.success();
+		  return res; 
+	  }
 }  

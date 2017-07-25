@@ -3,6 +3,7 @@ package com.yszc.blog.dao;
 import java.util.List;
 
 import com.yszc.blog.dto.Article;
+import com.yszc.blog.dto.Tag;
 
 public interface ArticleDao {
 
@@ -13,6 +14,7 @@ public interface ArticleDao {
 	 */
 	public List<Article> getAllArticle();  
 	
+	public List<Tag> getTagById();
 	/**
 	 * @author cqw
 	  * @date 2017年7月22日下午3:08:14

@@ -54,7 +54,7 @@ public class LoginController {
 	        }catch(Exception ex){  
 	        }  
 	    }  
-	    response.sendRedirect("/login.html");  
+	    response.sendRedirect("/articleView.html");  
 	}  
   
 	private String loginUser(User user) {  

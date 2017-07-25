@@ -1,5 +1,6 @@
 $(function(){
 	
+	getAllArticle();
 	function getAllArticle(){
 		//查询
 		$.ajax({
@@ -39,7 +40,7 @@ $(function(){
 	 * @date 2017年7月24日22:27:52
 	 * @description 新建博客
 	 */
-	addArticle();
+//	addArticle();
 	function addArticle(){
 		$.ajax({
 			type:"POST",
