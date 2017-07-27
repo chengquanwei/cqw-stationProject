@@ -51,6 +51,26 @@
         	a.user_id = u.id
         order by a.id
     </select>  
+    <!-- 查询文章列表-->  
+    <select id="getArticleInfoById" resultMap="queryForListMap" parameterType="java.lang.Integer">  
+        select  
+        	a.id,
+        	a.title,
+        	a.article,
+        	a.type,
+        	u.user_name,
+        	a.created_time,
+        	a.updated_time
+        from 
+        	article a
+        left join 
+        	user u 
+        on 
+        	a.user_id = u.id
+        where 
+        	a.id = #{articleId}
+        order by a.id
+    </select>  
     
     
     <!-- 新建blog -->

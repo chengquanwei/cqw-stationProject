@@ -57,7 +57,7 @@
                 <li class="active"><a href="#page-top">首页</a></li>
                 <li><a href="#about">关于</a></li>
                 <li><a href="#portfolio">相册</a></li>
-                <li><a href="#services">服务</a></li>
+                <li><a href="#services">生活</a></li>
                 <li><a href="#latest-post">博客</a></li>
 <!--                 <li><a href="#contact">联系我</a></li> -->
               </ul><!-- /.menu-list -->
@@ -400,26 +400,26 @@
                   <div class="post-meta">
                     <div class="entry-meta">
                       <span class="entry-date">
-                        <time datetime="2015-01-15">2017年7月26日21:34:01</time>
+                        <time id="blog-dateTime1">2017年1月1日00:00:00</time>
                       </span>
                       <span class="author-name">
-                        <a href="#">John Doe</a>
+                         <a href="#" id="blog-userName1">John Doe</a>
                       </span>
                       <span class="post-tags">
-                        <ul class="tag-list">
-                          <li><a href="#">web-design</a></li>
-                          <li><a href="#">html5</a></li>
-                          <li><a href="#">css3</a></li>
+                        <ul id="blog-tags1" class="tag-list">
+<!--                           <li><a href="#">web-design</a></li> -->
+<!--                           <li><a href="#">html5</a></li> -->
+<!--                           <li><a href="#">css3</a></li> -->
                         </ul>
                       </span>
                     </div><!-- /.entry-meta -->
                   </div><!-- /.post-meta -->
                 </div><!-- /.post-top -->
                 <div class="post-content">
-                  <h2 class="entry-title"><a href="blog-single.html">Standard Blog post Title</a></h2>
-                  <p class="entry-text">
-                    Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Mauris in erat justo. Nullam ac urna eu felis dapibus condimentum sit amet a augue. Sed non neque elit. Sed ut imperdiet nisi. Proin condimentum fermentum nunc. Etiam pharetra, erat sed fermentum feugiat, velit mauris egestas quam, ut aliquam massa nisl quis neque. Suspendisse in orci enim.
-                  </p>
+                  <h2 class="entry-title"><a href="#" id="blog-title1">标题</a></h2>
+                  <p class="entry-text" id="blog-content1">
+                    	内容
+				  </p>
                   <a class="btn" href="#">
                     <span class="btn-icon"><i class="fa fa-arrow-circle-right"></i></span>
                     Read More
@@ -438,25 +438,26 @@
                  <div class="post-meta">
                   <div class="entry-meta">
                     <span class="entry-date">
-                      <time datetime="2015-01-15">15 Jan 2015</time>
+                      <time id="blog-dateTime2">15 Jan 2015</time>
                     </span>
                     <span class="author-name">
-                      <a href="#">John Doe</a>
+                      <a href="#" id="blog-userName2">John Doe</a>
                     </span>
                     <span class="post-tags">
-                      <ul class="tag-list">
-                        <li><a href="#">web-design</a></li>
-                        <li><a href="#">html5</a></li>
-                        <li><a href="#">css3</a></li>
+                      <ul id="blog-tags2" class="tag-list">
+<!--                         <li><a href="#">web-design</a></li> -->
+<!--                         <li><a href="#">html5</a></li> -->
+<!--                         <li><a href="#">css3</a></li> -->
                       </ul>
                     </span>
                   </div><!-- /.entry-meta -->
                 </div><!-- /.post-meta -->
               </div><!-- /.post-top -->
               <div class="post-content">
-                <h2 class="entry-title"><a href="blog-single.html">Standard Blog post Title</a></h2>
-                <p class="entry-text">
-                  Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Mauris in erat justo. Nullam ac urna eu felis dapibus condimentum sit amet a augue. Sed non neque elit. Sed ut imperdiet nisi. Proin condimentum fermentum nunc. Etiam pharetra, erat sed fermentum feugiat, velit mauris egestas quam, ut aliquam massa nisl quis neque. Suspendisse in orci enim.
+                <h2 class="entry-title"><a href="#" id="blog-title2">标题</a></h2>
+                <input id="blog-id2" type = "hidden">
+                <p class="entry-text" id="blog-content2">
+                  	内容
                 </p>
                 <a class="btn" href="#">
                   <span class="btn-icon"><i class="fa fa-arrow-circle-right"></i></span>
@@ -524,39 +525,18 @@
 
 
 <footer>
-  <div id="footer-top" class="footer-top">
-    <div class="container">
-      <div class="row">
-        <div id="tweet" class="tweet text-left">
-        
-          <div class="col-xs-4 about-tweet">
-            <span class="tweet-icon"><i class="fa fa-twitter"></i></span>
-            <span class="tweet-author">John Doe</span>
-            <p class="tweet-details">
-              Sed semper lorem at felis. Vestibulum volutpat, lacus a ultrices sagittis eupulvinar nuncint
-            </p><!-- /.tweet-details -->
-            <time datetime="PT2H">2 Hours Ago</time>
-          </div>
-          
-          <div class="col-xs-4 about-tweet">
-            <span class="tweet-icon"><i class="fa fa-twitter"></i></span>
-            <span class="tweet-author">John Doe</span>
-            <p class="tweet-details">
-              Sed semper lorem at felis. Vestibulum volutpat, lacus a ultrices sagittis eupulvinar nuncint
-            </p><!-- /.tweet-details -->
-            <time datetime="PT2H">2 Hours Ago</time>
-          </div>
-          
-          <div class="col-xs-4 about-tweet">
-            <span class="tweet-icon"><i class="fa fa-twitter"></i></span>
-            <span class="tweet-author">John Doe</span>
-            <p class="tweet-details">
-              Sed semper lorem at felis. Vestibulum volutpat, lacus a ultrices sagittis eupulvinar nuncint
-            </p><!-- /.tweet-details -->
-            <time datetime="PT2H">2 Hours Ago</time>
-          </div>
-          
-        </div><!-- /#tweet -->
+  <div id="footer-top" style="height:80px;">
+    <div style="display:table;height:100%;" class="container">
+      <div class="row" style="vertical-align: middle;display: table-cell;">
+      		<div class="col-xs-4 center-block">
+              	
+          	</div>
+          	<div class="col-xs-4 text-center">
+              	<span>copyright © 2017</span>
+          	</div>
+          	<div class="col-xs-4 center-block">
+              	
+          	</div>
       </div><!-- /.row -->
     </div><!-- /.container -->
   </div><!-- /#footer-top -->
@@ -586,7 +566,10 @@
 <script src="assets/js/functions.js"></script>
 <script src="assets/js/wow.min.js"></script>
 <script type="text/javascript" src="assets/js/jquery.ajaxchimp.min.js"></script>
-
+<!--  -->
+<script src="../../js/layer/layer.js"></script>
+<script src="../../js/pagesJs/weCommon.js"></script>
+<script src="../../js/pagesJs/articleView.js"></script>
 
 
 

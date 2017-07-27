@@ -43,6 +43,20 @@ public class ArticleController extends BaseController{
 		  res.success(articles);
 	    return res; 
 	  }
+	  
+	  /**
+		 * @author cqw
+		 * @date 2017年7月22日15:39:48
+		 * @Description 得到所有的文章列表
+		 */
+	  @RequestMapping(value = "/getArticleInfoById",method = RequestMethod.POST)
+	  public @ResponseBody BlogResponse getArticleInfoById(String id,HttpServletRequest request){  
+		  logger.info("into getAllArticle.");
+		  BlogResponse res = new BlogResponse();
+		  Article article = articleService.getArticleById(Integer.parseInt(id));
+		  res.success(article);
+	    return res; 
+	  }
 	  /**
 	   * @author cqw
 	   * @date 2017年7月23日10:13:52
