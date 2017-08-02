@@ -5,6 +5,7 @@ import java.io.IOException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.Logger;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.IncorrectCredentialsException;
@@ -24,6 +25,7 @@ import com.yszc.blog.utils.BlogResponse;
 @Controller
 @RequestMapping("/login")   
 public class LoginController {  
+	private final Logger logger = Logger.getLogger(ArticleController.class);
     @Autowired  
     private UserServiceImpl userService;  
   
@@ -44,17 +46,19 @@ public class LoginController {
 	    }  
 	    return res;
 	  }  
-  
+    
+    /**
+      * @author cqw
+      * @date 2017年7月23日下午6:41:15
+      * @Description 退出登录
+     */
     @RequestMapping(value = "/logout",method = RequestMethod.POST)  
 	public void logout(HttpServletRequest request,HttpServletResponse response) throws IOException{  
 	    Subject subject = SecurityUtils.getSubject();  
-	    if (subject != null) {  
-	        try{  
-	            subject.logout();  
-	        }catch(Exception ex){  
-	        }  
+	    if (subject.isAuthenticated()) {
+	        subject.logout(); // session 会销毁，在SessionListener监听session销毁，清理权限缓存  
 	    }  
-	    response.sendRedirect("/articleView.html");  
+//	    response.sendRedirect("/yszcblog-project/pages/manage/summernote.html");  
 	}  
   
 	private String loginUser(User user) {  

@@ -1,0 +1,72 @@
+<!DOCTYPE html>  
+<html>  
+    <head>  
+	    <meta charset="UTF-8">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	    <title>后台管理-编写博客</title>  
+	    <link rel="stylesheet" href="../../bootstrap/css/bootstrap.css">
+		<link href="../../summernote/dist/summernote.css" rel="stylesheet"/>
+		<script src="../../js/jquery-1.12.0.js"></script>
+	    <script src="../../js/layer/layer.js"></script>
+		<script src="../../bootstrap/js/bootstrap.min.js"></script>
+		<script src="../../summernote/dist/summernote.js"></script>
+		<script src="../../summernote/dist/lang/summernote-zh-CN.js"></script>    <!-- 中文-->
+		<script src="../../js/pagesJs/login.js"></script>
+		<script src="../../js/pagesJs/summernotePage.js"></script>
+		<style type="text/css">
+			.separation20{
+				margin-top:20px;
+			}
+		</style>
+    </head>  
+    <body>  
+	    <div class="container">
+	     <div class="row separation20">
+	     	<div class="col-md-9">
+		    	个人博客--后台管理
+		    </div>
+		    <div class="col-md-3">
+		    	欢迎<label id="username">名字</label>登录
+		    	<button id="logout" type="button" class="btn btn-default">退出</button>
+		    </div>
+		    <div class="col-md-12">
+		    	<hr>
+		    </div>
+		    
+		  </div>
+		  
+		  <div class="row">
+		    <div class="col-md-12">
+		    	<div class="input-group">
+					<span class="input-group-addon">标题</span>
+					<input id="title" type="text" class="form-control" placeholder="请输入标题">
+				</div>
+		    </div>
+		  </div>
+		  
+		  <div class="row separation20">
+		    <div class="col-md-12">
+		    	<div class="input-group">
+					<span class="input-group-addon">标签</span>
+					<input id="tagName" type="text" class="form-control" placeholder="请添加标签，多个标签请用逗号分开">
+				</div>
+		    </div>
+		  </div>
+		  <!-- 正文 -->
+		  <div class="row separation20">
+		    <div class="col-md-12">
+		    	<div class="summernote"></div>
+		    	<div id="concent"></div>
+		    </div>
+		  </div>
+		  <div class="row">
+		    <div class="col-md-12 text-center">
+		    	<div id="cancelpre" class="btn-group">
+					<button type="button" class="btn btn-default" id="cancel">取消</button>
+					<button type="button" class="btn btn-default" id="preserve">保存</button>
+				</div>
+		    </div>
+		  </div>
+		</div>
+    </body>  
+</html>  
