@@ -94,7 +94,7 @@ public class ArticleController extends BaseController{
 		  }
 		  articleService.addArticle(article);
 		  BlogResponse res = new BlogResponse();
-		  res.success();
+		  res.success(article);
 		  return res; 
 	  }
 	  
