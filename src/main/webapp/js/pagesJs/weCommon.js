@@ -10,6 +10,9 @@
  * 			2.方法：getQueryString(name) : 获取url后的参数名字
  * 							param  : 传入url后所跟的名字name
  * 							return : 返回url后所跟名字的对应的值
+ * 			3.方法：getCookie(name) : 根据名字获取cookie中的值
+ * 							param  : cookie对应的名字
+ * 							return : cookie对应的名字的值
  */
 //*******************************提供公共的js方法********************************************
 $(function(){
@@ -63,4 +66,18 @@ function getQueryString(name) {
 	if (r != null) 
 		return unescape(r[2]); 
 	return null; 
+}
+/**
+ * @author cqw
+ * @date 2017年8月2日21:24:00
+ * @description 根据名字获取cookie中的值
+ * @param name
+ * @returns
+ */
+function getCookie(name){
+	var arr,reg=new RegExp("(^| )"+name+"=([^;]*)(;|$)");
+	if(arr=document.cookie.match(reg))
+		return unescape(arr[2]);
+	else
+		return null;
 }

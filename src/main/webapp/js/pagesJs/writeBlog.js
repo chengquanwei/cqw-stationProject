@@ -18,7 +18,7 @@ $(function(){
  		data.type = 1;
  		data.tagName = tagName;
  		//调用方法
- 		var resData = addArticle(data);
+ 		addArticle(data);
  		
  	})
  	
@@ -40,5 +40,5 @@ $(function(){
 				}else{}
 			}
 		});
-	}
+	}$("#username").text(getCookie("username"));
 })

@@ -2,6 +2,7 @@ package com.yszc.blog.controller;
 
 import java.io.IOException;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -21,6 +22,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.yszc.blog.dto.User;
 import com.yszc.blog.service.Impl.UserServiceImpl;
 import com.yszc.blog.utils.BlogResponse;
+import com.yszc.blog.utils.CookieUtils;
 
 @Controller
 @RequestMapping("/login")   
@@ -35,7 +37,7 @@ public class LoginController {
       * @Description 登录
      */
     @RequestMapping(value = "/dologin",method = RequestMethod.POST) //url  
-	public @ResponseBody BlogResponse dologin(User user,HttpServletRequest request){
+	public @ResponseBody BlogResponse dologin(User user,HttpServletRequest request,HttpServletResponse response){
 	    String info = loginUser(user);  
 	    BlogResponse res = new BlogResponse();
 	    res.success(user);
@@ -43,6 +45,7 @@ public class LoginController {
 	    	res.failure();
 	    }else{  
 	    	res.success();
+	    	CookieUtils.setCookie(request, response, "username", user.getUserName());
 	    }  
 	    return res;
 	  }  

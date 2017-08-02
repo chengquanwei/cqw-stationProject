@@ -1,5 +1,7 @@
 package com.yszc.blog.shrio;
 
+import javax.servlet.http.Cookie;
+
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationInfo;
@@ -46,7 +48,7 @@ public class ShiroDbRealm extends AuthorizingRealm {
             return null; // 异常处理，找不到数据  
         // 设置session  
         Session session = SecurityUtils.getSubject().getSession();  
-        session.setAttribute(ui.getUserName(), ui);   
+        session.setAttribute("username", ui);   
         /**
          * SimpleAuthenticationInfo里存放的是SecurityUtils.getSubject().login(token)进行验证的信息
          * 当执行SecurityUtils.getSubject().login(token)时，会先执行SimpleAuthenticationInfo进行认证
@@ -56,13 +58,6 @@ public class ShiroDbRealm extends AuthorizingRealm {
          */
         return new SimpleAuthenticationInfo(ui, ui.getPassword(), getName());  
     }  
-  
-//    private User tokenToUser(UsernamePasswordToken authcToken) {  
-//        User user = new User();  
-//        user.setUserName(authcToken.getUsername());  
-//        user.setPassword(String.valueOf(authcToken.getPassword()));  
-//        return user;  
-//    }  
   
     //一定要写getset方法  
     public UserServiceImpl getUserService() {  
