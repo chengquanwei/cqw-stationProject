@@ -24,6 +24,20 @@
 			.left-hr{
 				border-left: solid 1px #ededed;
 			}
+			.around-line{
+				border: solid 1px #ededed;
+			}
+			.ellipsis{
+				position: relative; line-height: 20px; max-height: 40px;overflow: hidden;
+			 }
+			 
+			.ellipsis::after{
+				content: "..."; position: absolute; bottom: 0; right: 0; padding-left: 40px;
+				background: -webkit-linear-gradient(left, transparent, #fff 55%);
+				background: -o-linear-gradient(right, transparent, #fff 55%);
+				background: -moz-linear-gradient(right, transparent, #fff 55%);
+				background: linear-gradient(to right, transparent, #fff 55%);
+			}
 			.tag-list li {
 				padding-right: 5px;
 				position: relative;
@@ -34,9 +48,12 @@
 				bottom: 0px;
 				right: 0px;
 			} 
-.tag-list li:last-child:before {
-	content: '';
-} 
+			.tag-list li:last-child:before {
+				content: '';
+			} 
+			li {
+			    display: inline-block;
+			}
 		</style>
     </head>  
     <body>  
@@ -62,45 +79,39 @@
 		    </div>
 		  </div>
 		  
-		  <div class="row">
-		    <div class="col-md-2">
-		  	</div>
-		    <div class="col-md-8 category">
-		    	<div class="input-group">
-					<h3><label id="title"></label></h3>
-				</div>
-		    </div>
-		    <div class="col-md-2">
-		  	</div>
-		  </div>
-		  
-		  <div class="row separation20">
-		  	<div class="col-md-2">
-		  	</div>
-		    <div class="col-md-8 category">
-		    	<div class="input-group">
-					作者：<label id="author"></label>/
-					创建时间：<label id="createDate"></label>/
-					标签：
-					<span class="post-tags">
-                        <ul id="tags" class="tag-list">
-                        </ul>
-                     </span>
-				</div>
-		    </div>
-		    <div class="col-md-2">
-		  	</div>
-		  </div>
-		  <!-- 正文 -->
-		  <div class="row separation20">
-		    <div class="col-md-2">
-		  	</div>
-		    <div class="col-md-8">
-		    	<div id="concent"></div>
-		    </div>
-		    <div class="col-md-2">
-		  	</div>
-		  </div>
-		</div>
+<div class="row">
+	 	<div class="panel panel-default">
+    	<div class="panel-body">
+		  	<div class="row">
+			    <div class="col-md-12 category">
+			    	<div class="input-group">
+						<h3><label id="title"></label></h3>
+					</div>
+			    </div>
+			  </div>
+			  <div class="row separation20">
+			    <div class="col-md-12 category">
+			    	<div class="input-group">
+						作者：<label id="author"></label>/
+						创建时间：<label id="createDate"></label>/
+						标签：
+	                        <label id="tags" class="tag-list"></label>
+	                       
+					</div>
+			    </div>
+			  </div>
+			  <!-- 正文 -->
+			  <div class="row separation20">
+			    <div class="col-md-12">
+			    	<div class="ellipsis" id="concent"></div>
+			    </div>
+			  </div>
+			</div>
+	 </div>	  
+</div>	 
+	
+		
+		
+	</div>
     </body>  
 </html>  
