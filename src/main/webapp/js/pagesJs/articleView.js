@@ -8,30 +8,6 @@ $(function(){
 	//加载文章内容
 	getAllArticle();
 	
-	/**
-	 * @author cqw
-	 * @date 2017年7月24日22:27:52
-	 * @description 新建博客
-	 */
-//	addArticle();
-	function addArticle(){
-		$.ajax({
-			type:"POST",
-			url:"/yszcblog-project/article/addArticle",
-			data:{
-				title:"标题测试",
-				article:"内容测试",
-				type:"1",
-				tagName:"cs,测试,java,GC"
-			},
-			success:function(result){
-				console.log(result);
-				if(result.meta.message == "ok"){
-					layer.alert("新建成功！");
-				}else{}
-			}
-		});
-	}
 });
 
 /**

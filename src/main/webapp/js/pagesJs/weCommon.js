@@ -7,6 +7,9 @@
  * 							param  : 传入timestamp(时间戳)
  * 							return : 返回dataTime(格式：yyyy-MM-dd hh:mm:ss)
  * 									 异常处理：当传入参数为空时返回：0000-00-00 00:00:00
+ * 			2.方法：getQueryString(name) : 获取url后的参数名字
+ * 							param  : 传入url后所跟的名字name
+ * 							return : 返回url后所跟名字的对应的值
  */
 //*******************************提供公共的js方法********************************************
 $(function(){
@@ -45,6 +48,19 @@ $(function(){
 	}else{
 		 return '0000-00-00 00:00:00';
 	}
-	
-       
+}
+
+/**
+ * @author cqw
+ * @date 2017年7月27日22:25:07
+ * @description 根据名字获取url后的参数
+ * @param name
+ * @returns
+ */
+function getQueryString(name) {
+	var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i"); 
+	var r = window.location.search.substr(1).match(reg); 
+	if (r != null) 
+		return unescape(r[2]); 
+	return null; 
 }

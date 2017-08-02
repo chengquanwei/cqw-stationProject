@@ -2,7 +2,7 @@ $(function(){
 	var data ={	title:"",article:"",type:"",tagName:""};
 	//summernote初始化
  	$('.summernote').summernote({
-        height: 500,
+        height: 368,
         tabsize: 2,
         lang: 'zh-CN'
     });
@@ -35,9 +35,8 @@ $(function(){
 			success:function(result){
 				console.log(result);
 				if(result.meta.message == "ok"){
-					layer.alert("新建成功！");
-					$(".summernote").css("display","none");
-			 		$("#concent").html(result.data.article);
+					var id = result.data.id;
+					window.location.href="/yszcblog-project/pages/yszc_blog/blog-single.html?id="+id; 
 				}else{}
 			}
 		});

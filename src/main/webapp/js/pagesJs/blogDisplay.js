@@ -3,22 +3,12 @@ $(function(){
 	getArticleInfoById(id);
 })
 
-
 /**
  * @author cqw
- * @date 2017年7月27日22:25:07
- * @description 根据名字获取url后的参数
- * @param name
- * @returns
+ * @date 2017年8月2日16:31:54
+ * @description 根据博客id获取博客内容
+ * @param id
  */
-function getQueryString(name) {
-	var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i"); 
-	var r = window.location.search.substr(1).match(reg); 
-	if (r != null) 
-		return unescape(r[2]); 
-	return null; 
-} 
-
 function getArticleInfoById(id){
 	$.ajax({
 		type:"POST",
@@ -35,6 +25,11 @@ function getArticleInfoById(id){
 				$("#blog-display-title").html(res.title);
 				$("#blog-display-content").html(res.article);
 				
+				var info = "";
+				for(var k = 0;k<res.tags.length;k++){
+					info += '<li><a href="#">'+res.tags[k].name+'</a></li>';
+				}
+				$("#blog-display-tags").html(info);
 			}else{
 				console.log("获取博客内容失败！");
 			}
