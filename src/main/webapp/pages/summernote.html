@@ -1,86 +1,28 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>summernote - bs3fa4</title>
-
-<link type="text/css" rel="stylesheet" href="../bootstrap/css/bootstrap.css" />
-<link type="text/css" rel="stylesheet" href="../summernote-master/dist/summernote.css" />
-<script type="text/javascript" src="../js/jquery-1.12.0.js"></script>
-<script type="text/javascript" src="../bootstrap/js/bootstrap.js"></script>
-<script type="text/javascript" src="${ctx}/components/summernote/summernote.js"></script>
-<script type="text/javascript" src="${ctx}/components/summernote/lang/summernote-zh-CN.js"></script>
-
-  <script type="text/javascript">
-    $('div.summernote').each(function() {
-        var $this = $(this);
-        var placeholder = $this.attr("placeholder") || '';
-        var url = $this.attr("action") || '';
-        $this.summernote({
-            lang : 'zh-CN',
-            placeholder : placeholder,
-            minHeight : 300,
-            dialogsFade : true,// Add fade effect on dialogs
-            dialogsInBody : true,// Dialogs can be placed in body, not in
-            // summernote.
-            disableDragAndDrop : false,// default false You can disable drag
-            // and drop
-            callbacks : {
-                onImageUpload : function(files) {
-                    var $files = $(files);
-                    $files.each(function() {
-                        var file = this;
-                        var data = new FormData();
-                        data.append("file", file);
-
-                        $.ajax({
-                            data : data,
-                            type : "POST",
-                            url : url,
-                            cache : false,
-                            contentType : false,
-                            processData : false,
-                            success : function(response) {
-                                var json = YUNM.jsonEval(response);
-                                YUNM.debug(json);
-                                YUNM.ajaxDone(json);
-                                if (json[YUNM.keys.statusCode] == YUNM.statusCode.ok) {
-                                    // 文件不为空
-                                    if (json[YUNM.keys.result]) {
-                                        var imageUrl = json[YUNM.keys.result].completeSavePath;
-                                        $this.summernote('insertImage', imageUrl, function($image) {
-                                        });
-                                    }
-                                }
-                            },
-                            error : YUNM.ajaxError
-                        });
-                    });
-                }
-            }
-        });
-    });
-  </script>
-</head>
-<body>
-<div class="container">
-    <form class="form-horizontal required-validate" action="#" enctype="multipart/form-data" method="post" onsubmit="return iframeCallback(this, pageAjaxDone)">
-    <div class="form-group">
-        <label for="" class="col-md-2 control-label">项目封面</label>
-        <div class="col-md-8 tl th">
-            <input type="file" name="image" class="projectfile" value="${deal.image}"/>
-            <p class="help-block">支持jpg、jpeg、png、gif格式，大小不超过2.0M</p>
-        </div>
-    </div>
-
-      <div class="form-group">
-        <label for="" class="col-md-2 control-label">项目详情</label>
-        <div class="col-md-8">
-            <div class="summernote" name="description" placeholder="请对项目进行详细的描述，使更多的人了解你的" action="${ctx}/file">${deal.description}</div>
-        </div>
-    </div>
-    </form>
-</div>
-</body>
-</html>
+<!DOCTYPE html>  
+<html>  
+    <head>  
+	    <meta charset="UTF-8">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	    <title>summernote测试案例</title>  
+	    <link rel="stylesheet" href="http://www.jq22.com/jquery/bootstrap-3.3.4.css">
+		<link href="../summernote/dist/summernote.css" rel="stylesheet"/>
+		<script src="http://www.jq22.com/jquery/jquery-1.10.2.js"></script>
+		<script src="http://www.jq22.com/jquery/bootstrap-3.3.4.js"></script>
+		<script src="../summernote/dist/summernote.js"></script>
+		<script src="../summernote/dist/lang/summernote-zh-CN.js"></script>    <!-- 中文-->
+		<script type="text/javascript">
+			$(function(){
+			 	$('.summernote').summernote({
+			        height: 500,
+			        tabsize: 2,
+			        lang: 'zh-CN'
+			    });
+			})
+		</script>
+    </head>  
+    <body>  
+       <div >
+       		<div class="summernote"></div>
+       </div>
+    </body>  
+</html>  
