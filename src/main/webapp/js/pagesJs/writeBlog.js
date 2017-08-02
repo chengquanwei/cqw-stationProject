@@ -36,9 +36,10 @@ $(function(){
 				console.log(result);
 				if(result.meta.message == "ok"){
 					var id = result.data.id;
-					window.location.href="/yszcblog-project/pages/yszc_blog/blog-single.html?id="+id; 
+					window.location.href="/yszcblog-project/pages/manage/writeBlogDisplay.html?id="+id; 
 				}else{}
 			}
 		});
-	}$("#username").text(getCookie("username"));
+	}
+ 	$("#username").text(getCookie("username"));
 })
