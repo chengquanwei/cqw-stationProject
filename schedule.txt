@@ -3,7 +3,8 @@
  *@date:2017年7月12日22:39:18
  *@description 项目任务计划表
  */
- 访问路径：http://localhost:8080/yszcblog-project/pages/userList.html
+ 
+ 访问路径：http://localhost:8080/yszcblog-project/pages/yszc_blog/index.html
 -------------------------------------------------------------------------------
 2017年7月12日：项目构建（ssm+maven）
 			   整合FreeMarker模板
