@@ -1,6 +1,37 @@
 $(function(){
+	
 	var id = getQueryString("id");
 	getArticleInfoById(id);
+	
+	//删除
+	$("#delete").click(function(){
+		layer.confirm('您确定删除该博客？', {
+			  title:"删除",
+			  btn: ['取消','确定'] //按钮
+			}, function(index, layero){
+				layer.close(index);
+			}, function(index, layero){
+			  
+		});
+	});
+	//编辑
+	$("#edit").click(function(){
+		layer.confirm('您确定修改该博客？', {
+			  title:"修改",
+			  btn: ['取消','确定'] //按钮
+			}, function(index, layero){
+				layer.close(index);
+			}, function(index, layero){
+				layer.open({
+					  type: 2,
+					  title: '修改',
+					  shade: 0.1,
+					  area: ['90%', '90%'],
+					  content: '/yszcblog-project/pages/manage/writeBlog.html' //iframe的url
+					}); 
+		});
+	});
+	
 })
 
 /**
