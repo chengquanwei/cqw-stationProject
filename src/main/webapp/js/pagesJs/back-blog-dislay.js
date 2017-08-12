@@ -28,8 +28,11 @@ $(function(){
 					  maxmin:true,
 					  shade: 0.1,
 					  area: ['90%', '90%'],
-					  content: '/yszcblog-project/pages/manage/back-blog-edit.html' //iframe的url
-					}); 
+					  content: '/yszcblog-project/pages/manage/back-blog-edit.html', //iframe的url
+					  end:function(){
+						  getArticleInfoById(id);
+					  }
+				}); 
 			   sessionStorage.setItem("blogId", id); 
 		});
 	});

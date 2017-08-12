@@ -17,4 +17,6 @@ public interface ArticleService {
     public void deleteArticleById(Integer articleId);  
     
     public void updateArticle(Article article);  
+    
+    public void deleteArticleTag(Integer articleId,String tagId);
 }

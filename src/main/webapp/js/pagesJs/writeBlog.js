@@ -40,5 +40,4 @@ $(function(){
 			}
 		});
 	}
- 	$("#username").text(getCookie("username"));
 })

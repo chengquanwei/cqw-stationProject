@@ -1,9 +1,11 @@
 package com.yszc.blog.controller;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
+import javax.lang.model.element.Element;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.log4j.Logger;
@@ -99,24 +101,29 @@ public class ArticleController extends BaseController{
 	  }
 	  
 	  /**
-	   * @author cqw
+	    * @author cqw
 	    * @date 2017年7月25日下午10:21:52
 	    * @Description 修改博客
 	    * 			        缺少删除博客与标签的关联关系（在js中单独调用一个方法进行删除）
 	   */
 	  @RequestMapping(value = "/updateArticle",method = RequestMethod.POST)
-	  public @ResponseBody BlogResponse updateArticle(Article article,@RequestParam("tagName") String tagName, HttpServletRequest request){
+	  public @ResponseBody BlogResponse updateArticle(Article article,@RequestParam("tagName") String tagName,@RequestParam("tagsId") String tagsId ,HttpServletRequest request){
 		  article.setUpdatedTime(new Date());
+		  //获取修改之前所有的标签id
+		  String[] tagsIdsplit = tagsId.split(",");
+		  List<String> arrayList = new ArrayList<String>(Arrays.asList(tagsIdsplit));
 		  if(tagName != null && !"".equals(tagName)){
 			  List<Tag> tags = new ArrayList<Tag>();
 			  String[] tagNames = tagName.split(",");
+			  
+			  List<String> tagsIds = new ArrayList<String>();
 			  for(String tName:tagNames){
-
 				  Tag tag = new Tag();
 				  Tag isTag = tagService.getTagInfoByName(tName);
 				  if(isTag != null){
 					  tag.setId(isTag.getId());
 					  logger.info("已经存在的标签:"+ isTag.toString());
+					  tagsIds.add(isTag.getId().toString());
 				  }else{
 					 logger.info("添加标签:"+tName);
 					 tag.setName(tName);
@@ -125,9 +132,15 @@ public class ArticleController extends BaseController{
 					 tags.add(tag);
 				  }
 			  }
+			  arrayList.removeAll(tagsIds);
 			  article.setTags(tags);
 			  article.setUser(getCurrentUser());
 		  }
+		  //删除标签与博客的关联关系
+		  for(int i = 0;i<arrayList.size();i++){
+			  articleService.deleteArticleTag(article.getId(), arrayList.get(i));
+		  }
+		  
 		  articleService.updateArticle(article);
 		  BlogResponse res = new BlogResponse();
 		  res.success();

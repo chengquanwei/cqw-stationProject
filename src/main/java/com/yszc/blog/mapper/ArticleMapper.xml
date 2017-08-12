@@ -31,7 +31,9 @@
 	    on
 	    	at.tag_id = t.id
 	    where 
-	    	at.article_id = #{id}
+	    	at.article_id = #{id} 
+	    and 
+	    	at.is_valid = '1'
   </select>
     <!-- 查询文章列表-->  
     <select id="getAllArticle" resultMap="queryForListMap">  
@@ -88,10 +90,10 @@
 	<!-- 新增关联关系的内容 -->
 	<insert id="insertArticleTag" parameterType="com.yszc.blog.dto.Article">
 		
-		insert into article_tag(article_id,tag_id)
+		insert into article_tag(article_id,tag_id,is_valid)
 		(
 			select 
-				a.id,t.id
+				a.id,t.id,1
 			from 
 				article a,tag t
 			where 
@@ -103,6 +105,10 @@
 			</foreach>
 		)
 	</insert>
+	<update id="deleteArticleTag" parameterType="com.yszc.blog.dto.ArticleTag" >
+        update article_tag set is_valid = '0'
+        where article_id = #{0} and tag_id = #{1}
+    </update>
     
       
 </mapper>  

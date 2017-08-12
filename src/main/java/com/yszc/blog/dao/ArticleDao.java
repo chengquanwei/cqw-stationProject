@@ -41,8 +41,19 @@ public interface ArticleDao {
 	  * @Description 添加
 	 */
 	public void insertArticle(Article article);
+	/**
+	 * @author cqw
+	  * @date 2017年8月12日下午11:58:18
+	  * @Description 新增博客与标签的关联关系
+	 */
 	public void insertArticleTag(Article article);
 	
+	/**
+	 * @author cqw
+	  * @date 2017年8月12日23:59:13
+	  * @Description 删除博客与标签的关联关系
+	 */
+	public void deleteArticleTag(Integer articleId,String tagId);
 	/**
 	 * @author cqw
 	  * @date 2017年7月22日下午3:13:20

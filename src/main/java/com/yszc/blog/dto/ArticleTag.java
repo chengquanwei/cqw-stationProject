@@ -7,7 +7,7 @@ public class ArticleTag {
 	private Integer id;
 	private Integer articleId;
 	private Integer tagId;
-	
+	private String isValid;
 	private Date createdTime;
 	private Date updatedTime;
 	
@@ -40,5 +40,11 @@ public class ArticleTag {
 	}
 	public void setUpdatedTime(Date updatedTime) {
 		this.updatedTime = updatedTime;
+	}
+	public String getIsValid() {
+		return isValid;
+	}
+	public void setIsValid(String isValid) {
+		this.isValid = isValid;
 	}
 }

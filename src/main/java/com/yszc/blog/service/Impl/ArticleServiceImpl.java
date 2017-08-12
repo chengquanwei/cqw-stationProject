@@ -59,4 +59,10 @@ public class ArticleServiceImpl implements ArticleService{
 		}
 	}
 
+	@Override
+	public void deleteArticleTag(Integer articleId, String tagId) {
+		logger.info("articleId:"+articleId+",tagId:"+tagId);
+		articleDao.deleteArticleTag(articleId, tagId);
+	}
+
 }
