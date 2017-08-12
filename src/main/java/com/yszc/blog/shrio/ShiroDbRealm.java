@@ -1,7 +1,5 @@
 package com.yszc.blog.shrio;
 
-import javax.servlet.http.Cookie;
-
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationInfo;
@@ -18,8 +16,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.yszc.blog.dto.User;
 import com.yszc.blog.service.Impl.UserServiceImpl;
 
-public class ShiroDbRealm extends AuthorizingRealm {  
-    @Autowired  
+public class ShiroDbRealm extends AuthorizingRealm {
+    @Autowired
     private UserServiceImpl userService;  
     public static final String SESSION_USER_KEY = "admin";  
   
@@ -59,12 +57,12 @@ public class ShiroDbRealm extends AuthorizingRealm {
         return new SimpleAuthenticationInfo(ui, ui.getPassword(), getName());  
     }  
   
-    //一定要写getset方法  
-    public UserServiceImpl getUserService() {  
+    //get,set方法  
+    public UserServiceImpl getUserService() {
         return userService;  
     }  
   
-    public void setUserService(UserServiceImpl userService) {  
+    public void setUserService(UserServiceImpl userService) {
         this.userService = userService;  
     }  
 }  

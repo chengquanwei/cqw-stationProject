@@ -41,7 +41,9 @@ public class ArticleServiceImpl implements ArticleService{
 	public void addArticle(Article article) {
 		logger.info("into addArticle.");
 		articleDao.insertArticle(article);
-		articleDao.insertArticleTag(article);
+		if(article != null && article.getTags() != null && article.getTags().size() > 0){
+			articleDao.insertArticleTag(article);
+		}
 	}
 
 	@Override
