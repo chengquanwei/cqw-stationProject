@@ -19,7 +19,6 @@ $(function(){
  		data.tagName = tagName;
  		//调用方法
  		addArticle(data);
- 		
  	})
  	
  	/**

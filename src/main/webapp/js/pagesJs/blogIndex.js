@@ -37,7 +37,7 @@ function getAllArticle(){
 										  	'<div class="row">'+
 											    '<div class="col-md-12 category">'+
 											    	'<div class="input-group">'+
-														'<h3><a href=/yszcblog-project/pages/manage/edit-blog.html?id='+id+'>'+title+'</a></h3>'+
+														'<h3><a href=/yszcblog-project/pages/manage/back-blog-dislay.html?id='+id+'>'+title+'</a></h3>'+
 													'</div>'+
 											    '</div>'+
 											  '</div>'+

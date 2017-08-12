@@ -87,6 +87,7 @@
 
 	<!-- 新增关联关系的内容 -->
 	<insert id="insertArticleTag" parameterType="com.yszc.blog.dto.Article">
+		
 		insert into article_tag(article_id,tag_id)
 		(
 			select 

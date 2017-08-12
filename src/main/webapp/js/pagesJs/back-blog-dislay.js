@@ -25,10 +25,12 @@ $(function(){
 				layer.open({
 					  type: 2,
 					  title: '修改',
+					  maxmin:true,
 					  shade: 0.1,
 					  area: ['90%', '90%'],
-					  content: '/yszcblog-project/pages/manage/writeBlog.html' //iframe的url
+					  content: '/yszcblog-project/pages/manage/back-blog-edit.html' //iframe的url
 					}); 
+			   sessionStorage.setItem("blogId", id); 
 		});
 	});
 	
