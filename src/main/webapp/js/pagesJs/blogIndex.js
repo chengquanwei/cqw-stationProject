@@ -1,7 +1,6 @@
 $(function(){
 	//加载文章内容
 	getAllArticle();
-	
 })
 
 /**
@@ -27,6 +26,7 @@ function getAllArticle(){
 					var createDate = format(res.createdTime);
 					var title = res.title;
 					var concent = res.article;
+					var id = res.id;
 					
 					var info = "";
 					for(var k = 0;k<res.tags.length;k++){
@@ -37,7 +37,7 @@ function getAllArticle(){
 										  	'<div class="row">'+
 											    '<div class="col-md-12 category">'+
 											    	'<div class="input-group">'+
-														'<h3><label>'+title+'</label></h3>'+
+														'<h3><a href=/yszcblog-project/pages/manage/edit-blog.html?id='+id+'>'+title+'</a></h3>'+
 													'</div>'+
 											    '</div>'+
 											  '</div>'+

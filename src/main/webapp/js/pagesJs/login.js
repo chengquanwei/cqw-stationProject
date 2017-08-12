@@ -13,8 +13,7 @@ $(function(){
 			success:function(result){
 				if(result.meta.message == "ok"){
 //					layer.alert("登录成功！");
-//					window.location.href='/yszcblog-project/pages/articleView.html';
-					window.location.href='/yszcblog-project/pages/manage/writeBlog.html';
+					window.location.href='/yszcblog-project/pages/manage/blogIndex.html';
 				}else{
 					layer.alert("登录失败！");
 				}
