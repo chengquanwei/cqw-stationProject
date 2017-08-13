@@ -2,6 +2,7 @@ package com.yszc.blog.service;
 
 import java.util.List;
 
+import com.github.pagehelper.PageInfo;
 import com.yszc.blog.dto.Article;
 
 public interface ArticleService {
@@ -19,4 +20,6 @@ public interface ArticleService {
     public void updateArticle(Article article);  
     
     public void deleteArticleTag(Integer articleId,String tagId);
+    
+    public List<Article> queryAllArticleByPage(Integer pageNo,Integer pageSize);
 }

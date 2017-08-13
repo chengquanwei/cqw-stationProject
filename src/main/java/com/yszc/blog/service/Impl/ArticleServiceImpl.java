@@ -9,6 +9,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.yszc.blog.dao.ArticleDao;
 import com.yszc.blog.dto.Article;
 import com.yszc.blog.service.ArticleService;
@@ -59,10 +62,26 @@ public class ArticleServiceImpl implements ArticleService{
 		}
 	}
 
+	//为什么没加事务注解也可以执行
 	@Override
 	public void deleteArticleTag(Integer articleId, String tagId) {
 		logger.info("articleId:"+articleId+",tagId:"+tagId);
 		articleDao.deleteArticleTag(articleId, tagId);
+	}
+
+	/**
+	 * @author cqw
+	 * @date 2017年8月13日12:20:34
+	 * @description 分页查询博客列表
+	 */
+	@Override
+	public List<Article> queryAllArticleByPage(Integer pageNo,
+			Integer pageSize) {
+		 	pageNo = pageNo == null?1:pageNo;
+		    pageSize = pageSize == null?10:pageSize;
+		    PageHelper.startPage(pageNo, pageSize);
+		    List<Article> list = articleDao.getAllArticle();
+		 return list;
 	}
 
 }

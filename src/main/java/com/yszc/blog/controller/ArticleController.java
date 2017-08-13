@@ -5,7 +5,6 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
-import javax.lang.model.element.Element;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.log4j.Logger;
@@ -16,8 +15,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.github.pagehelper.PageInfo;
 import com.yszc.blog.dto.Article;
 import com.yszc.blog.dto.Tag;
+import com.yszc.blog.model.ArticleResPageModel;
+import com.yszc.blog.model.PageModel;
 import com.yszc.blog.service.ArticleService;
 import com.yszc.blog.service.TagService;
 import com.yszc.blog.utils.BaseController;
@@ -38,11 +40,16 @@ public class ArticleController extends BaseController{
 		 * @Description 得到所有的文章列表
 		 */
 	  @RequestMapping(value = "/getAllArticle",method = RequestMethod.POST)
-	  public @ResponseBody BlogResponse getAllArticle(HttpServletRequest request){  
+	  public @ResponseBody BlogResponse getAllArticle(Integer pageNo,Integer pageSize,HttpServletRequest request){  
 		  logger.info("into getAllArticle.");
 		  BlogResponse res = new BlogResponse();
-		  List<Article> articles = articleService.getAllArticle();
-		  res.success(articles);
+//		  List<Article> articles = articleService.getAllArticle();
+		  List<Article> articlesPage = articleService.queryAllArticleByPage(pageNo, pageSize);
+		  PageInfo<Article> page = new PageInfo<Article>(articlesPage);
+//		  ArticleResPageModel model = new ArticleResPageModel();
+//		  model.setArticlesPage(articlesPage);
+//		  model.setPage(page);
+		  res.success(page);
 	    return res; 
 	  }
 	  

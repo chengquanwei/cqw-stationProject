@@ -3,7 +3,7 @@
  * @date 2017年7月27日22:59:27
  * 
  * @document：
- * 			1.方法：	format(timestamp) : 时间戳转换为时间格式
+ * 			1.方法：format(timestamp) : 时间戳转换为时间格式
  * 							param  : 传入timestamp(时间戳)
  * 							return : 返回dataTime(格式：yyyy-MM-dd hh:mm:ss)
  * 									 异常处理：当传入参数为空时返回：0000-00-00 00:00:00
