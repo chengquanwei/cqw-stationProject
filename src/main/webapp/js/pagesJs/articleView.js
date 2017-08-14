@@ -24,7 +24,7 @@ function getAllArticle(){
 		success:function(result){
 			console.log(result);
 			if(result.meta.message == "ok"){
-				var res = result.data;
+				var res = result.data.list;
 				for(var i = 0;i<2;i++){
 					var tagLists = res[i].tags;
 					var info = "";

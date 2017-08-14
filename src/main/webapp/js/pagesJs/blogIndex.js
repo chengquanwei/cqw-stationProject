@@ -12,7 +12,6 @@ $(function(){
  * @description 加载文章内容
  */
 function getAllArticle(pageNo){
-	var pageInfo = 
 	//查询
 	$.ajax({
 		type:"POST",
@@ -87,6 +86,7 @@ function getAllArticle(pageNo){
 function pageArticle(pageInfo){
 	var element = $('#bp-element');
 	  var options = {
+			  alignment:"center",//居中显示
 		        bootstrapMajorVersion:3, //对应的bootstrap版本
 		        currentPage: pageInfo.pageNum, //当前页数，这里是用的EL表达式，获取从后台传过来的值
 		        numberOfPages: pageSize, //每页页数
