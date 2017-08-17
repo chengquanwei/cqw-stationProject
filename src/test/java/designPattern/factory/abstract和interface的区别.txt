@@ -1,0 +1,25 @@
+参考：http://blog.csdn.net/b271737818/article/details/3950245
+
+1.abstract class和interface是支持抽象类定义的两种机制
+
+	
+				Abstract class	     |        Interface
+
+实例化				不能				 |			不能
+
+类	    一种继承关系，一个类只能使用一次继承关系。|		一个类可以实现多个interface
+		可以通过继承多个接口实现多重继承	 |
+
+数据成员			可有自己的				 |    静态的不能被修改即必须是static final，一般不在此定义
+
+方法          可以私有的，非abstract方法，必须实现   |    不可有私有的，默认是public，abstract 类型
+
+变量          可有私有的，默认是friendly 型，	 |    不可有私有的，默认是public static final 型，
+	    其值可以在子类中重新定义，也可以重新赋值    |    且必须给其初值，实现类中不能重新定义，不能改变其值。
+
+设计理念              表示的是“is-a”关系  			 |  	表示的是“like-a”关系
+
+实现		需要继承，要用extends			 |		要用implements
+
+
+
