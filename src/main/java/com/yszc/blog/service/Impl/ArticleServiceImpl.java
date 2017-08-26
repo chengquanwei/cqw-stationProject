@@ -9,9 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
-import com.github.pagehelper.PageInfo;
 import com.yszc.blog.dao.ArticleDao;
 import com.yszc.blog.dto.Article;
 import com.yszc.blog.service.ArticleService;
