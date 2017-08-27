@@ -1,4 +1,4 @@
-package designPattern.Command;
+package designPattern.command;
 
 //命令模式
 public class Test {
