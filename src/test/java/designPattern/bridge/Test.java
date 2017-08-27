@@ -7,6 +7,5 @@ public class Test {
 		noodle.eat();
 		AbstractNoodle noodle1 = new BeefNoodle(new PlainStyle());
 		noodle1.eat();
-		
 	}
 }
