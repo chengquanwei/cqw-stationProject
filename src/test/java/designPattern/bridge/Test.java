@@ -1,5 +1,6 @@
 package designPattern.bridge;
 
+//桥接模式
 public class Test {
 	public static void main(String[] args){
 		AbstractNoodle noodle = new BeefNoodle(new PepperyStyle());
