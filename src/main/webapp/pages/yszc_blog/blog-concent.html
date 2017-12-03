@@ -28,6 +28,11 @@
 	<!--[if IE]>
   		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
   		<![endif]-->
+  	<style type="text/css">
+  		.ellipsis{
+				position: relative; line-height: 20px; max-height: 80px;overflow: hidden;
+			 }
+	</style>
   	</head>
   	<body class="header-fixed-top">
 
@@ -40,7 +45,7 @@
     <div class="post-area">
       <div class="post-area-top text-center">
         <h2 class="post-area-title">近期博客</h2>
-        <p class="title-description">Vestibulum auctor dapibus nequ</p>
+        <!-- <p class="title-description">Vestibulum auctor dapibus nequ</p> -->
       </div><!-- /.post-area-top -->
 
       <div class="row">
@@ -49,10 +54,8 @@
             <div class="item">
               <article class="post type-post">
                 <div class="post-top">
-                  <div class="post-thumbnail">
-                    <img src="images/blog/1.jpg" alt="post Image">
-                  </div><!-- /.post-thumbnail -->  
-                  <div class="post-meta">
+                	<h2 class="entry-title text-center"><a href="#" id="blog-title1">标题</a></h2>
+                  <div class="post-meta text-right">
                     <div class="entry-meta">
                       <span class="entry-date">
                         <time id="blog-dateTime1">2017年1月1日00:00:00</time>
@@ -62,23 +65,22 @@
                       </span>
                       <span class="post-tags">
                         <ul id="blog-tags1" class="tag-list">
-<!--                           <li><a href="#">web-design</a></li> -->
-<!--                           <li><a href="#">html5</a></li> -->
-<!--                           <li><a href="#">css3</a></li> -->
                         </ul>
                       </span>
                     </div><!-- /.entry-meta -->
                   </div><!-- /.post-meta -->
                 </div><!-- /.post-top -->
                 <div class="post-content">
-                  <h2 class="entry-title"><a href="#" id="blog-title1">标题</a></h2>
-                  <p class="entry-text" id="blog-content1">
+                  
+                  <p class="entry-text ellipsis" id="blog-content1">
                     	内容
 				  </p>
-                  <a class="btn" href="#">
-                    <span class="btn-icon"><i class="fa fa-arrow-circle-right"></i></span>
-                    Read More
-                  </a>
+				  <div class="text-right">
+	                  <a class="btn" href="#">
+	                    <span class="btn-icon"><i class="fa fa-arrow-circle-right"></i></span>
+	                    Read More
+	                  </a>
+	              </div>
                 </div><!-- /.post-content -->
               </article>
             </div><!-- /.item -->
@@ -87,10 +89,8 @@
             <div class="item">
               <article class="post type-post">
                 <div class="post-top">
-                  <div class="post-thumbnail">
-                   <img src="images/blog/2.jpg" alt="post Image">
-                 </div><!-- /.post-thumbnail -->  
-                 <div class="post-meta">
+                 <h2 class="entry-title text-center"><a href="#" id="blog-title2">标题</a></h2>
+                 <div class="post-meta text-right">
                   <div class="entry-meta">
                     <span class="entry-date">
                       <time id="blog-dateTime2">15 Jan 2015</time>
@@ -100,24 +100,24 @@
                     </span>
                     <span class="post-tags">
                       <ul id="blog-tags2" class="tag-list">
-<!--                         <li><a href="#">web-design</a></li> -->
-<!--                         <li><a href="#">html5</a></li> -->
-<!--                         <li><a href="#">css3</a></li> -->
                       </ul>
                     </span>
                   </div><!-- /.entry-meta -->
                 </div><!-- /.post-meta -->
               </div><!-- /.post-top -->
               <div class="post-content">
-                <h2 class="entry-title"><a href="#" id="blog-title2">标题</a></h2>
+                
                 <input id="blog-id2" type = "hidden">
-                <p class="entry-text" id="blog-content2">
+                <p class="entry-text ellipsis" id="blog-content2">
                   	内容
                 </p>
-                <a class="btn" href="#">
-                  <span class="btn-icon"><i class="fa fa-arrow-circle-right"></i></span>
-                  Read More
-                </a>
+                <div class="text-right">
+                	<a class="btn" href="#">
+	                  <span class="btn-icon"><i class="fa fa-arrow-circle-right"></i></span>
+	                  Read More
+	                </a>
+                </div>
+                
               </div><!-- /.post-content -->
             </article>
           </div><!-- /.item -->

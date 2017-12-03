@@ -1,4 +1,4 @@
-var pageSize = 3;
+var pageSize = 3;//每页显示多少篇文章
 $(function(){
 	
 	//加载文章内容

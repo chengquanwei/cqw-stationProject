@@ -323,7 +323,7 @@ h1,h2,h3,h4,h5,h6 {
 .about-area {
 	background: #f7f7f7;
 	border-top: 2px solid #3498db;
-	border-bottom: 2px solid #3498db;
+	/* border-bottom: 2px solid #3498db; */
 	position: relative;
 }
 .title-area {
@@ -777,7 +777,7 @@ h1,h2,h3,h4,h5,h6 {
 	padding-left: 15px;
 }
 .blog-post-singgle-page .post-content {
-	border-bottom: 2px solid #3498db;
+	/* border-bottom: 2px solid #3498db; */
 	padding-bottom: 40px;
 	padding-top: 50px;
 }
